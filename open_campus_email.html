@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>オープンキャンパスご案内 | 広島三育学院</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #f0f0ec; padding: 24px 16px; font-family: 'Noto Sans JP', sans-serif; }
+.email-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 0.5px solid #d4d9cc;
+}
+.hero { position: relative; width: 100%; height: 280px; overflow: hidden; }
+.hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(30,70,40,0.15) 0%, rgba(20,55,30,0.72) 100%);
+}
+.hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px 32px 28px; }
+.hero-badge {
+  display: inline-block;
+  background: #c8a84b;
+  color: #3a2800;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+.hero-title { color: #fff; font-size: 22px; font-weight: 700; line-height: 1.5; margin-bottom: 4px; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+.hero-sub { color: rgba(255,255,255,0.8); font-size: 12px; }
+.body-wrap { padding: 28px 32px 32px; background: #f9faf6; }
+.greeting {
+  font-size: 14px; color: #3a4a38; line-height: 1.8; margin-bottom: 24px;
+  background: #fff; border-radius: 10px; padding: 16px 20px; border-left: 4px solid #c8a84b;
+}
+.day-section { margin-bottom: 24px; }
+.day-label { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.day-label-text {
+  background: #2d6a3f; color: #fff; font-size: 12px; font-weight: 700;
+  padding: 5px 16px; border-radius: 20px; letter-spacing: 0.08em;
+}
+.day-label-line { flex: 1; height: 1px; background: #d0dbc8; }
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.tl-item { display: flex; gap: 0; align-items: stretch; }
+.tl-time-col { display: flex; flex-direction: column; align-items: center; width: 56px; flex-shrink: 0; }
+.tl-time { font-size: 11px; font-weight: 700; color: #2d6a3f; padding-top: 14px; white-space: nowrap; }
+.tl-dot-wrap { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.tl-dot { width: 10px; height: 10px; border-radius: 50%; background: #c8a84b; margin-top: 18px; flex-shrink: 0; }
+.tl-line { width: 2px; background: #d8e4d2; flex: 1; min-height: 8px; }
+.tl-card {
+  flex: 1; background: #fff; border-radius: 10px; border: 0.5px solid #dce5d5;
+  padding: 11px 13px; margin: 7px 0 5px 10px;
+}
+.tl-card-title { font-size: 13px; font-weight: 700; color: #2a3d28; margin-bottom: 3px; }
+.tl-card-sub { font-size: 12px; color: #607055; line-height: 1.6; }
+.tl-card-note { font-size: 11px; color: #8a9e80; margin-top: 4px; padding-top: 4px; border-top: 0.5px solid #e8f0e2; }
+.special-tag {
+  display: inline-block; background: #fff7e0; color: #7a5c00;
+  font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 4px;
+}
+.ice-card {
+  background: #fffbee; border: 1px solid #c8a84b; border-radius: 10px;
+  padding: 12px 16px; margin: 10px 0 6px; display: flex; align-items: center; gap: 12px;
+}
+.ice-icon { font-size: 26px; }
+.ice-text { font-size: 13px; color: #3a4a38; line-height: 1.6; font-weight: 600; }
+.section-heading {
+  font-size: 13px; font-weight: 700; color: #2d6a3f; margin-bottom: 10px;
+  padding-bottom: 6px; border-bottom: 1.5px solid #c8a84b;
+}
+.dress-items { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.dress-item { font-size: 12px; color: #3a4a38; padding-left: 14px; position: relative; line-height: 1.6; }
+.dress-item::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%; background: #c8a84b;
+  position: absolute; left: 0; top: 6px;
+}
+.packing-section { background: #fff; border-radius: 12px; border: 0.5px solid #dce5d5; padding: 18px; margin-top: 8px; }
+.packing-title { font-size: 13px; font-weight: 700; color: #2d6a3f; margin-bottom: 12px; }
+.packing-items { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.packing-item {
+  display: flex; align-items: center; gap: 8px; font-size: 12px; color: #3a4a38;
+  background: #f5f8f2; padding: 8px 10px; border-radius: 8px;
+}
+.packing-num {
+  width: 20px; height: 20px; background: #2d6a3f; color: #fff; font-size: 11px; font-weight: 700;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.note-box {
+  background: #f0f9f4; border-radius: 8px; border: 0.5px solid #b8d9c2;
+  padding: 10px 14px; font-size: 12px; color: #3a5e42; margin-top: 10px; line-height: 1.7;
+}
+.closing-note {
+  background: #fff; border-radius: 10px; border: 0.5px solid #dce5d5;
+  padding: 14px 18px; font-size: 13px; color: #3a4a38; line-height: 1.8; margin-top: 20px;
+}
+.footer { background: #2d6a3f; padding: 24px 32px; text-align: center; }
+.footer-name { color: #fff; font-size: 14px; font-weight: 700; }
+.footer-sub { color: #a8cfb3; font-size: 12px; margin-top: 4px; line-height: 1.9; }
+.footer-contact { margin-top: 14px; font-size: 12px; color: #a8cfb3; line-height: 2; }
+.footer-contact a { color: #c8a84b; text-decoration: none; }
+.gold { color: #c8a84b; }
+</style>
+</head>
+<body>
+<div class="email-wrap">
+
+  <div class="hero">
+    <img src="https://yamahiro82.github.io/saniku-lp/oc_hero.jpg" alt="スミルナ寮前で笑顔の生徒たち">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">OPEN CAMPUS 2025</div>
+      <div class="hero-title">オープンキャンパスへ<br>ようこそ！</div>
+      <div class="hero-sub">広島三育学院中学校・高等学校</div>
+    </div>
+  </div>
+
+  <div class="body-wrap">
+
+    <div class="greeting">
+      オープンキャンパスにお申し込みいただきありがとうございます。<br>
+      スタッフ一同、皆さまをお迎えできることを心よりお待ちしております。<br><br>
+      当日のプログラムと持ち物についてご案内いたします。
+    </div>
+
+    <div class="day-section">
+      <div class="day-label">
+        <span class="day-label-text">土曜日</span>
+        <div class="day-label-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">16:00</span><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div></div>
+          <div class="tl-card"><div class="tl-card-title">受付</div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">16:30</span><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div></div>
+          <div class="tl-card">
+            <div class="tl-card-title">歓迎セレモニー</div>
+            <div class="tl-card-sub">中学校聖歌隊による讃美歌合唱・アイスブレイクレクリエーション</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">17:30</span><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div></div>
+          <div class="tl-card">
+            <div class="tl-card-title">夕食</div>
+            <div class="tl-card-sub">保護者の方もご一緒にどうぞ</div>
+            <div class="tl-card-note">※ご希望されない方はこの時間に解散も可能です</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">19:00</span><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div></div>
+          <div class="tl-card">
+            <div class="tl-card-title">礼拝</div>
+            <div class="tl-card-sub">保護者の方もご参加いただけます</div>
+            <div class="tl-card-note">※ホテルへの送迎は礼拝後、学校を出発します</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">19:30</span><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div></div>
+          <div class="tl-card">
+            <div class="tl-card-title">交流会（体育館）</div>
+            <div class="tl-card-sub">保護者の方もご参加いただけます</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">20:30</span><div class="tl-dot-wrap"><div class="tl-dot"></div></div></div>
+          <div class="tl-card"><div class="tl-card-title">就寝準備</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="day-section">
+      <div class="day-label">
+        <span class="day-label-text">日曜日</span>
+        <div class="day-label-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">8:30</span><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div></div>
+          <div class="tl-card">
+            <div class="special-tag">🦆 ソアンプロジェクト</div>
+            <div class="tl-card-title">体験プログラム「アヒルの田んぼ見学」</div>
+            <div class="tl-card-sub">中高生が育てたアヒルが田んぼで働く様子を見学します</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">9:30</span><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div></div>
+          <div class="tl-card">
+            <div class="tl-card-title">保護者受付</div>
+            <div class="tl-card-note">※当日参加の方は10時までにお越しください</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">10:00</span><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div></div>
+          <div class="tl-card">
+            <div class="tl-card-title">オープンキャンパス歓迎セレモニー</div>
+            <div class="tl-card-sub">高校聖歌隊による讃美歌合唱・学校紹介・取り組み紹介</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">10:45</span><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div></div>
+          <div class="tl-card">
+            <div class="tl-card-title">オープンキャンパスプログラム</div>
+            <div class="tl-card-sub">
+              ① お子様向け：高校生徒会企画「キャンパスウォークラリー」<br>
+              ② 保護者向け：寮内見学<br>
+              ③ 保護者向け：学校紹介（詳細）
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">12:00</span><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div></div>
+          <div class="tl-card">
+            <div class="tl-card-title">昼食</div>
+            <div class="tl-card-sub">保護者・同行者の方もご一緒にどうぞ</div>
+          </div>
+        </div>
+        <div class="ice-card">
+          <span class="ice-icon">🍦</span>
+          <div class="ice-text">昼食後、ご参加のお子様全員に<br>校内ストアで使える <span style="color:#7a5c00">アイス券</span> をプレゼント！</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">13:15</span><div class="tl-dot-wrap"><div class="tl-dot"></div><div class="tl-line"></div></div></div>
+          <div class="tl-card">
+            <div class="tl-card-title">終わりの会</div>
+            <div class="tl-card-sub">アナウンス・お土産お渡し</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time-col"><span class="tl-time">13:30</span><div class="tl-dot-wrap"><div class="tl-dot"></div></div></div>
+          <div class="tl-card">
+            <div class="tl-card-title">解散</div>
+            <div class="tl-card-note">※公共交通機関ご利用の方：送迎便は14:00学校発</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 8px;">
+      <div class="section-heading">🎒 服装・持ち物について</div>
+      <div class="dress-items">
+        <div class="dress-item">動きやすい服装と靴でご参加ください（屋外活動があります）</div>
+        <div class="dress-item">必要に応じて着替えをご持参ください</div>
+        <div class="dress-item">宿泊の方は朝晩の冷え込みに備えた羽織ものをお持ちください</div>
+      </div>
+      <div class="packing-section">
+        <div class="packing-title">🧳 宿泊体験の持ち物リスト</div>
+        <div class="packing-items">
+          <div class="packing-item"><span class="packing-num">1</span>パジャマ・歯ブラシ</div>
+          <div class="packing-item"><span class="packing-num">2</span>タオル（ハンド・バス）</div>
+          <div class="packing-item"><span class="packing-num">3</span>上履き or 体育館シューズ</div>
+          <div class="packing-item"><span class="packing-num">4</span>水筒（お飲み物）</div>
+          <div class="packing-item"><span class="packing-num">5</span>筆記用具</div>
+          <div class="packing-item"><span class="packing-num">6</span>着替え（多めに）</div>
+          <div class="packing-item"><span class="packing-num">7</span>上着（朝晩は冷えます）</div>
+        </div>
+        <div class="note-box">💡 シャンプーなどは寮でお貸しします。お気軽にどうぞ。</div>
+      </div>
+    </div>
+
+    <div class="closing-note">
+      ご不明な点がございましたら、お気軽にお問い合わせください。<br>
+      皆さまにお会いできることを楽しみにしております。
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-name">広島三育学院中学校・高等学校</div>
+    <div class="footer-sub">
+      経営企画室　山口 大輝<br>
+      <span class="gold">Hiroshima Saniku Gakuin</span>
+    </div>
+    <div class="footer-contact">
+      TEL：<a href="tel:09013568350">090-1356-8350</a>（担当直通・山口）<br>
+      MAIL：<a href="mailto:yamaguchi.h@saniku.ed.jp">yamaguchi.h@saniku.ed.jp</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
