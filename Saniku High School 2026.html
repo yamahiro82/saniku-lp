@@ -131,6 +131,22 @@ body {
   vertical-align: middle;
   font-weight: 500;
 }
+/* 食事ハイライト行 */
+.row.meal {
+  background: #F0FAF5;
+}
+.row.meal .item { color: #0F6E56; font-weight: 500; }
+.row.meal .meal-place {
+  display: inline-block;
+  font-size: 11px;
+  background: #1D9E75;
+  color: #fff;
+  padding: 1px 8px;
+  border-radius: 99px;
+  margin-left: 6px;
+  font-weight: 500;
+  vertical-align: middle;
+}
 
 /* お知らせ */
 .info-card {
@@ -215,7 +231,7 @@ body {
     </div>
     <div class="day-body">
       <div class="row"><span class="time">18:10</span><span class="dot" style="background:#1D9E75"></span><div class="item">広島空港 到着</div></div>
-      <div class="row"><span class="time">19:30</span><span class="dot" style="background:#1D9E75"></span><div class="item">学校 到着<div class="note">食堂のお弁当（本部棟にて受け取り）</div></div></div>
+      <div class="row meal"><span class="time">19:30</span><span class="dot" style="background:#1D9E75"></span><div class="item">学校 到着<div class="note" style="color:#0F6E56;">夕食：食堂のお弁当（本部棟にて受け取り）</div></div></div>
       <div class="row"><span class="time">20:30</span><span class="dot" style="background:#aaa"></span><div class="item">生徒 入寮</div></div>
     </div>
   </div>
@@ -231,14 +247,14 @@ body {
       <i class="ti ti-chevron-down chevron"></i>
     </div>
     <div class="day-body">
-      <div class="row"><span class="time">6:30</span><span class="dot" style="background:#378ADD"></span><div class="item">朝食（食堂）</div></div>
+      <div class="row meal"><span class="time">6:30</span><span class="dot" style="background:#1D9E75"></span><div class="item">朝食<span class="meal-place">食堂</span></div></div>
       <div class="row"><span class="time">8:30</span><span class="dot" style="background:#378ADD"></span><div class="item">大会議室 集合</div></div>
-      <div class="row"><span class="time">8:50</span><span class="dot" style="background:#378ADD"></span><div class="item">学校出発 → ソアン体験（大和町内）<div class="note">※こども園ボランティア見学含む（予定）</div></div></div>
-      <div class="row"><span class="time">12:00</span><span class="dot" style="background:#378ADD"></span><div class="item">昼食（家庭科室・特別食）</div></div>
+      <div class="row"><span class="time">8:50</span><span class="dot" style="background:#378ADD"></span><div class="item">学校出発 → ソアン体験（大和町内）<div class="note">大和町のお米産業について〜生産者・加工者の生の声を聞く〜</div></div></div>
+      <div class="row meal"><span class="time">12:00</span><span class="dot" style="background:#1D9E75"></span><div class="item">昼食<span class="meal-place">家庭科室・特別食</span></div></div>
       <div class="row"><span class="time">13:20</span><span class="dot" style="background:#185FA5"></span><div class="item">中学2・3年生 交流会</div></div>
       <div class="row"><span class="time">14:30</span><span class="dot" style="background:#185FA5"></span><div class="item">労作体験</div></div>
       <div class="row"><span class="time">16:00</span><span class="dot" style="background:#aaa"></span><div class="item">フリータイム</div></div>
-      <div class="row"><span class="time">17:30</span><span class="dot" style="background:#378ADD"></span><div class="item">夕食（食堂）</div></div>
+      <div class="row meal"><span class="time">17:30</span><span class="dot" style="background:#1D9E75"></span><div class="item">夕食<span class="meal-place">食堂</span></div></div>
       <div class="row"><span class="time">19:00</span><span class="dot" style="background:#185FA5"></span><div class="item">高校ベスパー（同袍ベスパー）</div></div>
       <div class="row"><span class="time">20:30</span><span class="dot" style="background:#185FA5"></span><div class="item">高校 コワイヤー・ベル 見学</div></div>
       <div class="row"><span class="time">21:30</span><span class="dot" style="background:#aaa"></span><div class="item">帰寮</div></div>
@@ -259,9 +275,11 @@ body {
       <div class="row"><span class="time">7:00</span><span class="dot" style="background:#7F77DD"></span><div class="item">起床・朝食</div></div>
       <div class="row"><span class="time">9:30</span><span class="dot" style="background:#7F77DD"></span><div class="item">安息日学校（高校）</div></div>
       <div class="row"><span class="time">11:00</span><span class="dot" style="background:#534AB7"></span><div class="item">礼拝（高校チャペル・中高沖縄合同）</div></div>
+      <div class="row meal"><span class="time">12:00</span><span class="dot" style="background:#1D9E75"></span><div class="item">昼食<span class="meal-place">食堂</span></div></div>
       <div class="row"><span class="time">13:30</span><span class="dot" style="background:#534AB7"></span><div class="item">中学校聖歌隊 合同練習</div></div>
       <div class="row"><span class="time">15:00</span><span class="dot" style="background:#7F77DD"></span><div class="item">交流会（高校沖縄県人会 予定）</div></div>
       <div class="row"><span class="time">17:00</span><span class="dot" style="background:#534AB7"></span><div class="item">サマコンリハ：大合唱</div></div>
+      <div class="row meal"><span class="time">17:30</span><span class="dot" style="background:#1D9E75"></span><div class="item">夕食<span class="meal-place">食堂</span></div></div>
       <div class="row"><span class="time">19:15</span><span class="dot" style="background:#534AB7"></span><div class="item">サマコンリハ：ブラスバンド</div></div>
       <div class="row"><span class="time">21:30</span><span class="dot" style="background:#aaa"></span><div class="item">帰寮</div></div>
     </div>
@@ -284,8 +302,9 @@ body {
       <div class="row"><span class="time">9:15</span><span class="dot" style="background:#BA7517"></span><div class="item">高校紹介</div></div>
       <div class="row"><span class="time">10:00</span><span class="dot" style="background:#BA7517"></span><div class="item">50周年記念「大人のOC」学校紹介<span class="badge" style="background:#FAEEDA;color:#854F0B;">保護者向け</span></div></div>
       <div class="row"><span class="time">11:00</span><span class="dot" style="background:#BA7517"></span><div class="item">寮見学<span class="badge" style="background:#FAEEDA;color:#854F0B;">保護者向け</span></div></div>
-      <div class="row"><span class="time">12:00</span><span class="dot" style="background:#EF9F27"></span><div class="item">昼食</div></div>
+      <div class="row meal"><span class="time">12:00</span><span class="dot" style="background:#1D9E75"></span><div class="item">昼食<span class="meal-place">食堂</span></div></div>
       <div class="row"><span class="time">13:00</span><span class="dot" style="background:#aaa"></span><div class="item">フリータイム（サマコンリハ）</div></div>
+      <div class="row meal"><span class="time">17:00</span><span class="dot" style="background:#1D9E75"></span><div class="item">夕食<span class="meal-place">食堂お弁当・本部棟受け取り</span></div></div>
       <div class="row"><span class="time">17:40</span><span class="dot" style="background:#854F0B"></span><div class="item">サマーコンサート 開場</div></div>
       <div class="row"><span class="time">18:00</span><span class="dot" style="background:#854F0B"></span><div class="item" style="font-weight:600;">🎵 サマーコンサート 開演</div></div>
       <div class="row"><span class="time">20:30</span><span class="dot" style="background:#854F0B"></span><div class="item">サマーコンサート 終演</div></div>
