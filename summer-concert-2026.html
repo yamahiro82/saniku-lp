@@ -39,10 +39,44 @@ body{font-family:'Noto Sans JP',sans-serif;background:#0a0a12;color:#f0eee8;min-
 }
 .hero-entry-btn:hover{background:rgba(200,185,138,.3);}
 .hero-entry-btn svg{width:14px;height:14px;fill:#c8b98a;flex-shrink:0;}
+.hero-entry-btn.closed{
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.18);
+  color:#8a857c;
+  cursor:default;
+  pointer-events:none;
+}
+.hero-entry-btn.closed svg{fill:#8a857c;}
 .hero-entry-note{
   font-size:11px;color:#e8a080;letter-spacing:.04em;
   background:rgba(10,10,18,.55);padding:3px 8px;border-radius:4px;
   border:.5px solid rgba(232,160,128,.35);
+}
+
+.closed-notice{
+  margin:1.25rem 1.5rem 0;
+  max-width:720px;
+  margin-left:auto;margin-right:auto;
+  display:none;
+}
+.closed-notice.show{display:block;}
+.closed-notice-card{
+  border:.5px solid rgba(232,160,128,.35);
+  border-radius:12px;
+  padding:1.1rem 1.4rem;
+  background:rgba(232,160,128,.06);
+  display:flex;
+  gap:.75rem;
+  align-items:flex-start;
+}
+.closed-notice-icon{
+  flex-shrink:0;
+  width:18px;height:18px;
+  margin-top:1px;
+}
+.closed-notice-icon svg{width:18px;height:18px;fill:#e8a080;}
+.closed-notice-text{
+  font-size:13px;line-height:1.85;color:#d8c4b8;
 }
 
 .outer{max-width:720px;margin:0 auto;}
@@ -158,7 +192,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:#0a0a12;color:#f0eee8;min-
 
 <script>
   // ── URL設定：ここだけ書き換えればOK ──────────────────────
-  var ENTRY_URL   = "https://docs.google.com/forms/d/e/1FAIpQLSflVNovNCrFoMPJIgYNQ7h4fJgPMs8qYX8KQlC0I6319z90kA/viewform?usp=dialog";          // 申し込みフォームURL（空欄=リンクなし）
+  var ENTRY_URL   = "";          // 申し込みフォームURL（空欄=リンクなし）
   var LIVE_URL    = "";          // YouTubeライブURL（空欄=リンクなし）
   // ──────────────────────────────────────────────────────────
 
@@ -169,8 +203,10 @@ body{font-family:'Noto Sans JP',sans-serif;background:#0a0a12;color:#f0eee8;min-
       entryBtn.href = ENTRY_URL;
     } else {
       entryBtn.removeAttribute('href');
-      entryBtn.style.opacity = '0.5';
-      entryBtn.style.cursor = 'default';
+      entryBtn.classList.add('closed');
+      entryBtn.querySelector('.entry-btn-text').textContent = '申し込みを締め切りました';
+      document.getElementById('entryNote').textContent = '※ 受付終了';
+      document.getElementById('closedNotice').classList.add('show');
     }
     // LIVEバッジ
     var liveBadge = document.getElementById('liveBadge');
@@ -193,9 +229,9 @@ body{font-family:'Noto Sans JP',sans-serif;background:#0a0a12;color:#f0eee8;min-
     <div class="hero-entry">
       <a id="entryBtn" class="hero-entry-btn" href="#">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        申し込みはこちら
+        <span class="entry-btn-text">申し込みはこちら</span>
       </a>
-      <span class="hero-entry-note">※ 締切間近</span>
+      <span id="entryNote" class="hero-entry-note">※ 締切間近</span>
     </div>
   </div>
 </div>
@@ -214,6 +250,15 @@ body{font-family:'Noto Sans JP',sans-serif;background:#0a0a12;color:#f0eee8;min-
     </div>
   </div>
 
+  <div id="closedNotice" class="closed-notice">
+    <div class="closed-notice-card">
+      <span class="closed-notice-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+      </span>
+      <p class="closed-notice-text">ご来場には事前申し込みが必要です。会場キャパシティの関係で、申し込みは締め切らせていただきました。LIVE配信にてお楽しみください。</p>
+    </div>
+  </div>
+
   <div class="body-wrap">
 
     <div class="date-banner">
@@ -224,7 +269,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:#0a0a12;color:#f0eee8;min-
       </div>
       <div class="time-area">
         <div class="time-chips">
-          <div class="chip"><span class="chip-label">開場</span><span class="chip-time">17:40</span></div>
+          <div class="chip"><span class="chip-label">開場</span><span class="chip-time">17:30</span></div>
           <div class="chip"><span class="chip-label">開演</span><span class="chip-time">18:00</span></div>
         </div>
         <a id="liveBadge" class="live-badge">
