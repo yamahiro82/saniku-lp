@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ソアンプロジェクト｜広島三育学院</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --amber:#f6b641;
+    --amber-deep:#e09a1f;
+    --navy:#1a2333;
+    --navy-soft:#2b3650;
+    --cream:#FBF6EC;
+    --cream-deep:#F2E9D8;
+    --ink:#3A2E1F;
+    --moss:#5B6B4D;
+    --moss-deep:#46553a;
+    --line: rgba(58,46,31,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Noto Sans JP", sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .mincho-accent, .brand-mark{font-family:"Zen Maru Gothic", sans-serif;}
+  img{display:block; max-width:100%;}
+  a{color:inherit;}
+
+  /* ---------- header mark ---------- */
+  .top-mark{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 24px;
+    pointer-events:none;
+    mix-blend-mode:normal;
+  }
+  .top-mark .school{
+    font-size:11px; letter-spacing:0.12em; color:#fff;
+    background:rgba(26,35,51,0.55);
+    backdrop-filter:blur(6px);
+    padding:6px 14px; border-radius:999px;
+    font-weight:500;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex; align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero img{
+    position:absolute; inset:0;
+    width:100%; height:100%; object-fit:cover;
+    object-position:center 32%;
+    transform:scale(1.03);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(26,23,15,0.05) 0%, rgba(20,17,10,0.08) 38%, rgba(15,13,8,0.86) 100%);
+  }
+  .hero-inner{
+    position:relative; z-index:2;
+    width:100%;
+    padding: 0 24px 56px;
+    color:#fff;
+  }
+  .hero-eyebrow{
+    display:inline-block;
+    font-size:12px;
+    letter-spacing:0.22em;
+    color:var(--amber);
+    font-weight:700;
+    margin-bottom:18px;
+    opacity:0;
+    animation: fadeUp 0.9s ease forwards 0.3s;
+  }
+  .hero-copy{
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-weight:900;
+    font-size:clamp(30px, 8vw, 56px);
+    line-height:1.42;
+    letter-spacing:0.01em;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.25);
+    opacity:0;
+    animation: fadeUp 1s ease forwards 0.5s;
+  }
+  .hero-copy small{
+    display:block;
+    font-family:"Noto Sans JP", sans-serif;
+    font-weight:500;
+    font-size:0.42em;
+    color:rgba(255,255,255,0.82);
+    margin-top:14px;
+    line-height:1.8;
+  }
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(16px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .scroll-cue{
+    position:absolute; bottom:22px; left:50%; transform:translateX(-50%);
+    z-index:3;
+    width:1px; height:38px;
+    background:linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.75));
+    animation: pulseLine 2.2s ease-in-out infinite;
+  }
+  @keyframes pulseLine{
+    0%,100%{opacity:0.4;}
+    50%{opacity:1;}
+  }
+
+  /* ---------- inset photo (挿絵) ---------- */
+  .inset-photo{
+    background:var(--cream);
+    padding: 0 0 8px;
+  }
+  .inset-photo img{
+    width:100%;
+    aspect-ratio: 4 / 3;
+    object-fit:cover;
+  }
+  .inset-photo figcaption{
+    font-size:11.5px;
+    color:var(--ink);
+    opacity:0.5;
+    letter-spacing:0.04em;
+    padding:10px 24px 0;
+    text-align:right;
+  }
+  .what + .inset-photo{ background:var(--cream); }
+  .inset-photo--dark{
+    background:var(--navy);
+    padding-top:36px;
+    padding-bottom:60px;
+  }
+  .inset-photo--dark img{
+    border-radius:18px;
+    width:calc(100% - 48px);
+    margin:0 auto;
+  }
+  .inset-photo--dark figcaption{
+    color:rgba(255,255,255,0.55);
+    padding-right:48px;
+  }
+
+  /* ---------- shared section rhythm ---------- */
+  section{ padding: 92px 24px; position:relative; }
+  .wrap{ max-width:640px; margin:0 auto; }
+  .eyebrow{
+    font-size:12px; letter-spacing:0.2em; font-weight:700;
+    color:var(--moss); margin-bottom:14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:""; width:22px; height:1px; background:var(--moss);
+  }
+  h2{
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-weight:700;
+    font-size:clamp(24px, 5.6vw, 32px);
+    line-height:1.6;
+    color:var(--ink);
+    margin-bottom:26px;
+  }
+  p.lead{
+    font-size:16px;
+    color:var(--ink);
+    opacity:0.86;
+  }
+
+  /* fade-in on scroll */
+  .reveal{ opacity:0; transform:translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+  /* ---------- SECTION: 気づき (the moment) ---------- */
+  .moment{
+    background:var(--cream);
+    text-align:center;
+  }
+  .moment .quote-mark{
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-size:15px;
+    color:var(--amber-deep);
+    font-weight:700;
+    letter-spacing:0.06em;
+    margin-bottom:22px;
+  }
+  .moment blockquote{
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-weight:900;
+    font-size:clamp(26px, 7vw, 38px);
+    line-height:1.55;
+    color:var(--ink);
+    margin-bottom:24px;
+  }
+  .moment .sub{
+    font-size:15px;
+    color:var(--ink);
+    opacity:0.72;
+    max-width:420px;
+    margin:0 auto;
+    line-height:2;
+  }
+  .moment .divider{
+    width:48px; height:3px; background:var(--amber);
+    margin:36px auto 0;
+    border-radius:3px;
+  }
+
+  /* ---------- SECTION: ソアンとは ---------- */
+  .what{
+    background:var(--navy);
+    color:#fff;
+    padding-bottom:0;
+  }
+  .what .eyebrow{ color:var(--amber); }
+  .what .eyebrow::before{ background:var(--amber); }
+  .what h2{ color:#fff; }
+  .what p.lead{ color:rgba(255,255,255,0.78); }
+  .what .name-block{
+    margin-top:8px; margin-bottom:30px;
+  }
+  .what .name-block .en{
+    display:block;
+    font-size:12px; letter-spacing:0.14em;
+    color:var(--amber);
+    font-weight:500;
+    margin-top:6px;
+  }
+  .what-grid{
+    margin-top:48px;
+    display:grid;
+    gap:1px;
+    background:rgba(255,255,255,0.1);
+    border-radius:18px;
+    overflow:hidden;
+  }
+  .what-card{
+    background:var(--navy-soft);
+    padding:28px 24px;
+  }
+  .what-card .num{
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-size:13px; font-weight:700;
+    color:var(--amber);
+    letter-spacing:0.08em;
+    margin-bottom:10px;
+  }
+  .what-card h3{
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-size:18px; font-weight:700;
+    margin-bottom:10px;
+    color:#fff;
+  }
+  .what-card p{
+    font-size:14px;
+    color:rgba(255,255,255,0.7);
+    line-height:1.9;
+  }
+
+  /* ---------- SECTION: 変化 (photo strip) ---------- */
+  .change{
+    background:var(--cream-deep);
+  }
+  .change .wrap{ max-width:680px; }
+  .change-text{ text-align:center; margin-bottom:44px; }
+  .voice-card{
+    background:#fff;
+    border-radius:20px;
+    padding:34px 28px;
+    box-shadow: 0 18px 40px -22px rgba(58,46,31,0.35);
+    border:1px solid var(--line);
+    position:relative;
+  }
+  .voice-card::before{
+    content:"”";
+    position:absolute; top:6px; left:24px;
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-size:64px;
+    color:var(--amber);
+    opacity:0.5;
+    line-height:1;
+  }
+  .voice-card p{
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-size:18px;
+    font-weight:500;
+    line-height:1.9;
+    color:var(--ink);
+    position:relative; z-index:1;
+    margin-bottom:16px;
+  }
+  .voice-card .who{
+    font-size:12px;
+    color:var(--moss);
+    font-weight:700;
+    letter-spacing:0.05em;
+  }
+
+  /* ---------- SECTION: 三育 (school identity) ---------- */
+  .school{
+    background:var(--cream);
+  }
+  .school-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:8px 16px;
+    font-size:12px; font-weight:700;
+    color:var(--moss);
+    margin-bottom:24px;
+  }
+  .school-badge .dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--amber-deep);
+  }
+  .pillars{
+    margin-top:40px;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .pillar{
+    display:flex; align-items:baseline; gap:18px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .pillar:first-child{ padding-top:0; }
+  .pillar .label{
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-size:13px; font-weight:700;
+    color:var(--amber-deep);
+    min-width:64px;
+    letter-spacing:0.04em;
+  }
+  .pillar .desc h4{
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-size:16px; font-weight:700;
+    margin-bottom:4px;
+    color:var(--ink);
+  }
+  .pillar .desc p{
+    font-size:13.5px;
+    color:var(--ink);
+    opacity:0.68;
+    line-height:1.8;
+  }
+  .school-foot{
+    margin-top:36px;
+    font-size:13px;
+    color:var(--ink);
+    opacity:0.6;
+    line-height:1.9;
+  }
+
+  /* ---------- SECTION: CTA ---------- */
+  .cta{
+    background:var(--navy);
+    color:#fff;
+    text-align:center;
+    padding-top:100px;
+    padding-bottom:80px;
+  }
+  .cta-mark{
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-weight:900;
+    font-size:13px;
+    color:var(--amber);
+    letter-spacing:0.2em;
+    margin-bottom:20px;
+  }
+  .cta h2{
+    color:#fff;
+    font-size:clamp(22px, 6vw, 30px);
+    margin-bottom:18px;
+  }
+  .cta p.lead{
+    color:rgba(255,255,255,0.72);
+    max-width:380px;
+    margin:0 auto 40px;
+  }
+  .cta-buttons{
+    display:flex; flex-direction:column; gap:14px;
+    max-width:320px; margin:0 auto;
+  }
+  .btn{
+    display:flex; align-items:center; justify-content:center;
+    padding:17px 24px;
+    border-radius:14px;
+    font-weight:700;
+    font-size:15px;
+    text-decoration:none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .btn-primary{
+    background:var(--amber);
+    color:var(--navy);
+    box-shadow: 0 14px 30px -10px rgba(246,182,65,0.5);
+  }
+  .btn-primary:active{ transform:scale(0.97); }
+  .btn-secondary{
+    background:transparent;
+    color:#fff;
+    border:1px solid rgba(255,255,255,0.3);
+  }
+  .btn-secondary:active{ transform:scale(0.97); }
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--navy);
+    color:rgba(255,255,255,0.5);
+    text-align:center;
+    padding: 30px 24px 40px;
+    font-size:11.5px;
+    letter-spacing:0.03em;
+    border-top:1px solid rgba(255,255,255,0.08);
+  }
+  footer .school-name{
+    color:rgba(255,255,255,0.85);
+    font-weight:700;
+    margin-bottom:6px;
+    font-family:"Zen Maru Gothic", sans-serif;
+    font-size:13px;
+  }
+  footer .addr{ margin-top:4px; }
+
+  @media (min-width: 640px){
+    .what-grid{ grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+  <div class="top-mark"><span class="school">広島三育学院</span></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="images/hero.jpg" alt="地域での活動を行うソアンプロジェクトの生徒たちと地域の方々">
+    <div class="hero-inner">
+      <span class="hero-eyebrow">SOEN PROJECT</span>
+      <p class="hero-copy">この子、孫によう似とる。
+        <small>地域で出会ったおばあちゃんが、<br>ボクを孫みたいに呼んでくれた。</small>
+      </p>
+    </div>
+    <div class="scroll-cue"></div>
+  </section>
+
+  <!-- MOMENT -->
+  <section class="moment">
+    <div class="wrap reveal">
+      <div class="quote-mark">これも、ソアンでの学び。</div>
+      <blockquote>知らない島で、<br>知らないおばあちゃんに、<br>「また来てな」と言われた。</blockquote>
+      <p class="sub">ソアンプロジェクトに参加する生徒たちは、教室を飛び出し、<br>地域の方々と一緒に活動しながら、関係を育てています。</p>
+      <div class="divider"></div>
+    </div>
+  </section>
+
+  <!-- PHOTO: 田植え -->
+  <figure class="inset-photo reveal">
+    <img src="images/rice-planting.jpg" alt="田植えをする生徒たち">
+    <figcaption>田植え／地域の田んぼで</figcaption>
+  </figure>
+
+  <!-- WHAT IS SOAN -->
+  <section class="what">
+    <div class="wrap reveal">
+      <div class="eyebrow">ソアンプロジェクトとは</div>
+      <div class="name-block">
+        <h2 style="margin-bottom:0;">学校を飛び出して、<br>地域の中で育つ学び</h2>
+        <span class="en">Social Entrepreneur Project</span>
+      </div>
+      <p class="lead">ソアンプロジェクトは、広島三育学院の生徒が地域の方々との関わりを通して、社会とのつながり方を実践的に学ぶ取り組みです。一度きりのイベントではなく、何年も続く「また会いたい」と思える関係を、子どもたちと地域の間に育てています。</p>
+
+      <div class="what-grid">
+        <div class="what-card">
+          <div class="num">地域での実践</div>
+          <h3>畑と、人と</h3>
+          <p>地域の畑で生徒自身が作業し、地域の方々と一緒に汗を流します。</p>
+        </div>
+        <div class="what-card">
+          <div class="num">続く関係</div>
+          <h3>会いに行く理由</h3>
+          <p>一度きりの体験で終わらせず、何度も通うことで生まれる本当の関係を大切にします。</p>
+        </div>
+        <div class="what-card">
+          <div class="num">育つ力</div>
+          <h3>自分で考える</h3>
+          <p>地域の課題と向き合う中で、生徒たちは自分で動き、考える力を身につけます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO: みかん畑 -->
+  <figure class="inset-photo inset-photo--dark reveal">
+    <img src="images/orchard.jpg" alt="みかん畑で地域の方から指導を受ける生徒たち">
+    <figcaption>みかん畑／地域の方から学ぶ</figcaption>
+  </figure>
+
+  <!-- CHANGE / VOICE -->
+  <section class="change">
+    <div class="wrap reveal">
+      <div class="change-text">
+        <div class="eyebrow" style="justify-content:center;">生徒のことば</div>
+        <h2>子どもも、地域も、<br>生き生きとしていく</h2>
+      </div>
+      <div class="voice-card">
+        <p>島のおばあちゃんが、いつも僕の名前を覚えていてくれる。<br>会いに行くと「待っとったよ」って言ってくれるのが、うれしい。</p>
+        <div class="who">ソアンプロジェクト参加生徒</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHOOL IDENTITY -->
+  <section class="school">
+    <div class="wrap reveal">
+      <span class="school-badge"><span class="dot"></span>運営：広島三育学院</span>
+      <h2>新しい学びの形に<br>挑戦する全寮制の学校</h2>
+      <p class="lead">広島県三原市にある広島三育学院は、キリスト教主義に基づく全寮制男女共学の学校です。「人々からしてほしいと望むことを、人々にもそのとおりにせよ」という聖書の言葉を土台に、知育・徳育・体育のバランスある教育を実践しています。ソアンプロジェクトは、その学びを地域社会の中で実践する取り組みのひとつです。</p>
+
+      <div class="pillars">
+        <div class="pillar">
+          <span class="label">Mental</span>
+          <div class="desc">
+            <h4>考える力</h4>
+            <p>少人数体制と多様な考察機会で、発展的な学力を養います。</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <span class="label">Spiritual</span>
+          <div class="desc">
+            <h4>自立心と人間力</h4>
+            <p>全寮制ならではの奉仕・労作活動を通して人格を育みます。</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <span class="label">Physical</span>
+          <div class="desc">
+            <h4>健やかな心身</h4>
+            <p>規則正しい生活と、看護師常駐の万全な健康管理体制。</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="school-foot">第15回キャリア教育アワード グランプリ受賞</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap reveal">
+      <div class="cta-mark">SOEN PROJECT</div>
+      <h2>もっと知りたくなったら。</h2>
+      <p class="lead">広島三育学院の日々の様子や、ソアンプロジェクトの取り組みをご紹介しています。</p>
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="https://www.saniku.ac.jp/hiroshima/" target="_blank" rel="noopener">広島三育学院 公式サイトへ</a>
+        <a class="btn btn-secondary" href="https://www.saniku.ac.jp/hiroshima/request/" target="_blank" rel="noopener">資料請求・お問い合わせ</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="school-name">広島三育学院</div>
+    <div class="addr">〒729-1493 広島県三原市大和町下徳良296-2　TEL. 0847-33-0311</div>
+    <div class="addr">© Hiroshima Adventist Academy</div>
+  </footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
