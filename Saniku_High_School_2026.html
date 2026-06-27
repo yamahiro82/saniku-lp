@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>広島三育学院 見学ツアー｜保護者向けスケジュール</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  background: #f0f0ed;
+  min-height: 100vh;
+}
+.lp-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px 14px 48px;
+}
+
+/* ヒーロー */
+.lp-hero {
+  background: #1D9E75;
+  border-radius: 16px;
+  padding: 20px 18px 16px;
+  margin-bottom: 14px;
+  color: #fff;
+}
+.lp-hero .label { font-size: 12px; font-weight: 400; opacity: .8; margin-bottom: 6px; }
+.lp-hero h1 { font-size: 22px; font-weight: 600; line-height: 1.3; margin-bottom: 10px; }
+.lp-hero .meta { font-size: 13px; opacity: .85; line-height: 1.7; }
+
+/* 見学可能バナー */
+.lp-notice {
+  background: #E1F5EE;
+  border-radius: 10px;
+  padding: 11px 14px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: #0F6E56;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+.lp-notice i { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+
+/* 日程カード */
+.day-card {
+  background: #fff;
+  border: 0.5px solid rgba(0,0,0,0.1);
+  border-radius: 14px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.day-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 64px;
+}
+.day-header:active { background: #f8f8f6; }
+.day-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 600;
+  flex-shrink: 0;
+  line-height: 1.1;
+}
+.day-badge .dow { font-size: 10px; font-weight: 400; margin-top: 1px; }
+.day-info { flex: 1; min-width: 0; }
+.day-title { font-size: 15px; font-weight: 600; color: #1a1a1a; line-height: 1.3; }
+.day-sub { font-size: 12px; color: #777; margin-top: 3px; line-height: 1.4; }
+.chevron { font-size: 18px; color: #bbb; flex-shrink: 0; transition: transform 0.2s; }
+.chevron.open { transform: rotate(180deg); }
+
+/* スケジュール本体 */
+.day-body { display: none; border-top: 0.5px solid rgba(0,0,0,0.08); }
+.day-body.open { display: block; }
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 0.5px solid rgba(0,0,0,0.06);
+}
+.row:last-child { border-bottom: none; }
+.time {
+  font-size: 12px;
+  color: #999;
+  min-width: 40px;
+  padding-top: 3px;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.item {
+  font-size: 14px;
+  color: #1a1a1a;
+  line-height: 1.55;
+  flex: 1;
+}
+.item .note {
+  font-size: 12px;
+  color: #999;
+  margin-top: 3px;
+  line-height: 1.5;
+}
+.badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-left: 5px;
+  vertical-align: middle;
+  font-weight: 500;
+}
+/* 食事ハイライト行 */
+.row.meal {
+  background: #F0FAF5;
+}
+.row.meal .item { color: #0F6E56; font-weight: 500; }
+.row.meal .meal-place {
+  display: inline-block;
+  font-size: 11px;
+  background: #1D9E75;
+  color: #fff;
+  padding: 1px 8px;
+  border-radius: 99px;
+  margin-left: 6px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+/* お知らせ */
+.info-card {
+  background: #e8e8e4;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-top: 10px;
+}
+.info-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.info-row {
+  font-size: 13px;
+  color: #333;
+  padding: 7px 0;
+  border-bottom: 0.5px solid rgba(0,0,0,0.08);
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+.info-row:last-child { border-bottom: none; padding-bottom: 0; }
+.info-row i { color: #888; margin-top: 2px; flex-shrink: 0; font-size: 15px; }
+
+/* キャンパスマップ */
+.map-card {
+  background: #fff;
+  border: 0.5px solid rgba(0,0,0,0.1);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-top: 10px;
+}
+.map-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.map-note {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.campus-map-wrap {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 0.5px solid rgba(0,0,0,0.08);
+}
+.campus-map-wrap iframe {
+  width: 100%;
+  height: 420px;
+  display: block;
+  border: none;
+}
+.map-pdf-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #1D9E75;
+  text-decoration: none;
+}
+.map-pdf-link i { font-size: 15px; }
+
+/* 連絡先 */
+.contact-card {
+  background: #fff;
+  border: 0.5px solid rgba(0,0,0,0.1);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-top: 10px;
+}
+.contact-label { font-size: 12px; color: #999; margin-bottom: 3px; }
+.contact-org { font-size: 12px; color: #666; margin-bottom: 8px; }
+.contact-name { font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px; }
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #1a1a1a;
+  padding: 6px 0;
+  border-bottom: 0.5px solid rgba(0,0,0,0.06);
+}
+.contact-row:last-child { border-bottom: none; padding-bottom: 0; }
+.contact-row i { color: #888; font-size: 16px; flex-shrink: 0; }
+.contact-row a { color: #1D9E75; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="lp-wrap">
+
+  <div class="lp-hero">
+    <div class="label">保護者の皆さまへ</div>
+    <h1>広島三育学院<br>見学ツアー</h1>
+    <div class="meta">
+      沖縄三育中学校 2・3年生および保護者対象<br>
+      2025年7月25日（木）〜 29日（月）
+    </div>
+  </div>
+
+  <div class="lp-notice">
+    <i class="ti ti-eye"></i>
+    <span>以下のスケジュールに記載されている活動は<strong>すべて見学可能</strong>です。日程をタップすると詳細が表示されます。</span>
+  </div>
+
+  <!-- 25日 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-badge" style="background:#E1F5EE;color:#0F6E56;">25<span class="dow">木</span></div>
+      <div class="day-info">
+        <div class="day-title">7月25日（木）</div>
+        <div class="day-sub">到着日｜広島空港 → 広島三育学院</div>
+      </div>
+      <i class="ti ti-chevron-down chevron"></i>
+    </div>
+    <div class="day-body">
+      <div class="row"><span class="time">18:10</span><span class="dot" style="background:#1D9E75"></span><div class="item">広島空港 到着</div></div>
+      <div class="row meal"><span class="time">19:30</span><span class="dot" style="background:#1D9E75"></span><div class="item">学校 到着<div class="note" style="color:#0F6E56;">夕食：食堂のお弁当（本部棟にて受け取り）</div></div></div>
+      <div class="row"><span class="time">20:30</span><span class="dot" style="background:#aaa"></span><div class="item">生徒 入寮</div></div>
+    </div>
+  </div>
+
+  <!-- 26日 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-badge" style="background:#E6F1FB;color:#185FA5;">26<span class="dow">金</span></div>
+      <div class="day-info">
+        <div class="day-title">7月26日（金）</div>
+        <div class="day-sub">体験・交流｜ソアン / 交流会 / 労作 / ベスパー</div>
+      </div>
+      <i class="ti ti-chevron-down chevron"></i>
+    </div>
+    <div class="day-body">
+      <div class="row meal"><span class="time">6:30</span><span class="dot" style="background:#1D9E75"></span><div class="item">朝食<span class="meal-place">食堂</span></div></div>
+      <div class="row"><span class="time">8:30</span><span class="dot" style="background:#378ADD"></span><div class="item">大会議室 集合</div></div>
+      <div class="row"><span class="time">8:50</span><span class="dot" style="background:#378ADD"></span><div class="item">学校出発 → ソアン体験（大和町内）<div class="note">大和町のお米産業について〜生産者・加工者の生の声を聞く〜</div></div></div>
+      <div class="row meal"><span class="time">12:00</span><span class="dot" style="background:#1D9E75"></span><div class="item">昼食<span class="meal-place">家庭科室・特別食</span></div></div>
+      <div class="row"><span class="time">13:20</span><span class="dot" style="background:#185FA5"></span><div class="item">中学2・3年生 交流会</div></div>
+      <div class="row"><span class="time">14:30</span><span class="dot" style="background:#185FA5"></span><div class="item">労作体験</div></div>
+      <div class="row"><span class="time">16:00</span><span class="dot" style="background:#aaa"></span><div class="item">フリータイム</div></div>
+      <div class="row meal"><span class="time">17:30</span><span class="dot" style="background:#1D9E75"></span><div class="item">夕食<span class="meal-place">食堂</span></div></div>
+      <div class="row"><span class="time">19:00</span><span class="dot" style="background:#185FA5"></span><div class="item">高校ベスパー（同袍ベスパー）</div></div>
+      <div class="row"><span class="time">20:30</span><span class="dot" style="background:#185FA5"></span><div class="item">高校 コワイヤー・ベル 見学</div></div>
+      <div class="row"><span class="time">21:30</span><span class="dot" style="background:#aaa"></span><div class="item">帰寮</div></div>
+    </div>
+  </div>
+
+  <!-- 27日 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-badge" style="background:#EEEDFE;color:#534AB7;">27<span class="dow">土</span></div>
+      <div class="day-info">
+        <div class="day-title">7月27日（土）</div>
+        <div class="day-sub">安息日・音楽｜礼拝 / 聖歌隊 / サマコンリハ</div>
+      </div>
+      <i class="ti ti-chevron-down chevron"></i>
+    </div>
+    <div class="day-body">
+      <div class="row"><span class="time">7:00</span><span class="dot" style="background:#7F77DD"></span><div class="item">起床・朝食</div></div>
+      <div class="row"><span class="time">9:30</span><span class="dot" style="background:#7F77DD"></span><div class="item">安息日学校（高校）</div></div>
+      <div class="row"><span class="time">11:00</span><span class="dot" style="background:#534AB7"></span><div class="item">礼拝（高校チャペル・中高沖縄合同）</div></div>
+      <div class="row meal"><span class="time">12:00</span><span class="dot" style="background:#1D9E75"></span><div class="item">昼食<span class="meal-place">食堂</span></div></div>
+      <div class="row"><span class="time">13:30</span><span class="dot" style="background:#534AB7"></span><div class="item">中学校聖歌隊 合同練習</div></div>
+      <div class="row"><span class="time">15:00</span><span class="dot" style="background:#7F77DD"></span><div class="item">交流会（高校沖縄県人会 予定）</div></div>
+      <div class="row"><span class="time">17:00</span><span class="dot" style="background:#534AB7"></span><div class="item">サマコンリハ：大合唱</div></div>
+      <div class="row meal"><span class="time">17:30</span><span class="dot" style="background:#1D9E75"></span><div class="item">夕食<span class="meal-place">食堂</span></div></div>
+      <div class="row"><span class="time">19:15</span><span class="dot" style="background:#534AB7"></span><div class="item">サマコンリハ：ブラスバンド</div></div>
+      <div class="row"><span class="time">21:30</span><span class="dot" style="background:#aaa"></span><div class="item">帰寮</div></div>
+    </div>
+  </div>
+
+  <!-- 28日 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-badge" style="background:#FAEEDA;color:#854F0B;">28<span class="dow">日</span></div>
+      <div class="day-info">
+        <div class="day-title">7月28日（日）</div>
+        <div class="day-sub">学校説明・サマコン｜高校紹介 / 寮見学 / 本番</div>
+      </div>
+      <i class="ti ti-chevron-down chevron"></i>
+    </div>
+    <div class="day-body">
+      <div class="row"><span class="time">7:00</span><span class="dot" style="background:#EF9F27"></span><div class="item">起床・朝食</div></div>
+      <div class="row"><span class="time">8:15</span><span class="dot" style="background:#EF9F27"></span><div class="item">チャペル：中高合同朝礼拝</div></div>
+      <div class="row"><span class="time">8:30</span><span class="dot" style="background:#EF9F27"></span><div class="item">チャペル：中高合同「ソアン中間発表」</div></div>
+      <div class="row"><span class="time">9:15</span><span class="dot" style="background:#BA7517"></span><div class="item">高校紹介</div></div>
+      <div class="row"><span class="time">10:00</span><span class="dot" style="background:#BA7517"></span><div class="item">50周年記念「大人のOC」学校紹介<span class="badge" style="background:#FAEEDA;color:#854F0B;">保護者向け</span></div></div>
+      <div class="row"><span class="time">11:00</span><span class="dot" style="background:#BA7517"></span><div class="item">寮見学<span class="badge" style="background:#FAEEDA;color:#854F0B;">保護者向け</span></div></div>
+      <div class="row meal"><span class="time">12:00</span><span class="dot" style="background:#1D9E75"></span><div class="item">昼食<span class="meal-place">食堂</span></div></div>
+      <div class="row"><span class="time">13:00</span><span class="dot" style="background:#aaa"></span><div class="item">フリータイム（サマコンリハ）</div></div>
+      <div class="row meal"><span class="time">17:00</span><span class="dot" style="background:#1D9E75"></span><div class="item">夕食<span class="meal-place">食堂お弁当・本部棟受け取り</span></div></div>
+      <div class="row"><span class="time">17:40</span><span class="dot" style="background:#854F0B"></span><div class="item">サマーコンサート 開場</div></div>
+      <div class="row"><span class="time">18:00</span><span class="dot" style="background:#854F0B"></span><div class="item" style="font-weight:600;">🎵 サマーコンサート 開演</div></div>
+      <div class="row"><span class="time">20:30</span><span class="dot" style="background:#854F0B"></span><div class="item">サマーコンサート 終演</div></div>
+    </div>
+  </div>
+
+  <!-- 29日 -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggle(this)">
+      <div class="day-badge" style="background:#FAECE7;color:#993C1D;">29<span class="dow">月</span></div>
+      <div class="day-info">
+        <div class="day-title">7月29日（月）</div>
+        <div class="day-sub">帰着日｜岩国空港より出発</div>
+      </div>
+      <i class="ti ti-chevron-down chevron"></i>
+    </div>
+    <div class="day-body">
+      <div class="row"><span class="time">7:00</span><span class="dot" style="background:#D85A30"></span><div class="item">起床・朝食</div></div>
+      <div class="row"><span class="time">8:15</span><span class="dot" style="background:#D85A30"></span><div class="item">学校 出発</div></div>
+      <div class="row"><span class="time">10:30</span><span class="dot" style="background:#D85A30"></span><div class="item">岩国空港 到着</div></div>
+      <div class="row"><span class="time">11:40</span><span class="dot" style="background:#993C1D"></span><div class="item" style="font-weight:600;">✈️ 岩国空港 出発</div></div>
+    </div>
+  </div>
+
+  <!-- お知らせ -->
+  <div class="info-card">
+    <div class="info-title"><i class="ti ti-info-circle"></i>ご案内・お願い</div>
+    <div class="info-row"><i class="ti ti-tool-kitchen-2"></i><span>食堂での喫食ご希望は、沖縄三育中・担任が取りまとめています。担任へお申し込みください。</span></div>
+    <div class="info-row"><i class="ti ti-car"></i><span>公共交通機関でお越しの方で、学校間の送迎が必要な場合はご相談ください。</span></div>
+  </div>
+
+  <!-- キャンパスマップ -->
+  <div class="map-card">
+    <div class="map-title"><i class="ti ti-map-2"></i>大和キャンパス 構内案内図</div>
+    <p class="map-note">© 2011 Hiroshima Saniku Gakuin　／　施設の場所はこちらのマップでご確認ください。</p>
+    <div class="campus-map-wrap">
+      <iframe src="campus_map.pdf" title="大和キャンパス構内案内図"></iframe>
+    </div>
+    <a class="map-pdf-link" href="campus_map.pdf" target="_blank">
+      <i class="ti ti-file-type-pdf"></i>PDFを別タブで開く
+    </a>
+  </div>
+
+  <!-- 緊急連絡先 -->
+  <div class="contact-card">
+    <div class="contact-label">緊急連絡先</div>
+    <div class="contact-org">広島三育学院 見学ツアー担当</div>
+    <div class="contact-name">山口 大輝</div>
+    <div class="contact-row"><i class="ti ti-device-mobile"></i><a href="tel:09064308172">090-6430-8172</a></div>
+    <div class="contact-row"><i class="ti ti-mail"></i><a href="mailto:yamaguchi.h@saniku.ed.jp">yamaguchi.h@saniku.ed.jp</a></div>
+  </div>
+
+</div>
+
+<script>
+function toggle(header) {
+  var body = header.nextElementSibling;
+  var chevron = header.querySelector('.chevron');
+  var isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chevron.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>
