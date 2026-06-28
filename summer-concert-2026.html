@@ -102,7 +102,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:#0a0a12;color:#f0eee8;min-
 .date-place{font-size:15px;color:#f0eee8;font-weight:500;}
 
 /* 時間＋ライブ */
-.time-area{margin-left:auto;display:flex;flex-direction:column;gap:.6rem;align-items:flex-end;}
+.time-chips{display:flex;gap:.75rem;flex-wrap:wrap;margin-left:auto;}
 .time-chips{display:flex;gap:.75rem;flex-wrap:wrap;}
 .chip{display:flex;flex-direction:column;align-items:center;gap:2px;padding:.5rem .875rem;border:.5px solid rgba(200,185,138,.3);border-radius:8px;background:rgba(255,255,255,.04);}
 .chip-label{font-size:9px;letter-spacing:.18em;color:#c8b98a;text-transform:uppercase;}
@@ -182,7 +182,7 @@ body{font-family:'Noto Sans JP',sans-serif;background:#0a0a12;color:#f0eee8;min-
 
 @media(max-width:480px){
   .hero-title{font-size:clamp(22px,7vw,32px);}
-  .time-area{margin-left:0;align-items:flex-start;width:100%;}
+  .time-chips{margin-left:0;width:100%;}
   .theme-card{padding:1.25rem;}
   .yt-card-body{flex-direction:column;align-items:flex-start;}
 }
@@ -232,6 +232,13 @@ body{font-family:'Noto Sans JP',sans-serif;background:#0a0a12;color:#f0eee8;min-
         <span class="entry-btn-text">申し込みはこちら</span>
       </a>
       <span id="entryNote" class="hero-entry-note">※ 締切間近</span>
+      <a id="liveBadge" class="live-badge">
+        <span class="live-dot"></span>
+        <span class="live-yt-icon">
+          <svg viewBox="0 0 90 63" xmlns="http://www.w3.org/2000/svg"><path d="M88.1 9.9C87 5.8 83.8 2.6 79.7 1.5 72.7 0 45 0 45 0S17.3 0 10.3 1.5C6.2 2.6 3 5.8 1.9 9.9 0 16.7 0 31.5 0 31.5s0 14.8 1.9 21.6C3 57.2 6.2 60.4 10.3 61.5 17.3 63 45 63 45 63s27.7 0 34.7-1.5c4.1-1.1 7.3-4.3 8.4-8.4C90 46.3 90 31.5 90 31.5s0-14.8-1.9-21.6zM36 45V18l24 13.5L36 45z"/></svg>
+        </span>
+        <span class="live-text">LIVE on YouTube</span>
+      </a>
     </div>
   </div>
 </div>
@@ -267,20 +274,10 @@ body{font-family:'Noto Sans JP',sans-serif;background:#0a0a12;color:#f0eee8;min-
         <span class="date-sub">2026年6月28日（日）</span>
         <span class="date-place">広島三育学院 体育館</span>
       </div>
-      <div class="time-area">
-        <div class="time-chips">
+      <div class="time-chips">
           <div class="chip"><span class="chip-label">開場</span><span class="chip-time">17:30</span></div>
           <div class="chip"><span class="chip-label">開演</span><span class="chip-time">18:00</span></div>
         </div>
-        <a id="liveBadge" class="live-badge">
-          <span class="live-dot"></span>
-          <span class="live-yt-icon">
-            <svg viewBox="0 0 90 63" xmlns="http://www.w3.org/2000/svg"><path d="M88.1 9.9C87 5.8 83.8 2.6 79.7 1.5 72.7 0 45 0 45 0S17.3 0 10.3 1.5C6.2 2.6 3 5.8 1.9 9.9 0 16.7 0 31.5 0 31.5s0 14.8 1.9 21.6C3 57.2 6.2 60.4 10.3 61.5 17.3 63 45 63 45 63s27.7 0 34.7-1.5c4.1-1.1 7.3-4.3 8.4-8.4C90 46.3 90 31.5 90 31.5s0-14.8-1.9-21.6zM36 45V18l24 13.5L36 45z"/></svg>
-          </span>
-          <span class="live-text">LIVE on YouTube</span>
-          <span class="live-sub">配信URL 後日公開</span>
-        </a>
-      </div>
     </div>
 
     <div class="accordion">
